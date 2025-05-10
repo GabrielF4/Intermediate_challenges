@@ -1,14 +1,31 @@
-#Two Sum Problem
+#Challenge 2: Two Sum Problem
 
-def find_sum(arr, sum):
+from typing import List
+
+def find_sum(arr: List[int], sum: int):
     for i in arr:
         for j in arr:
             if i != j and i + j == sum:
                 return i, j
-    return "No sums found"
+    return False, False
 
-arr = [2, 3, 5, 7, 11, 13]
+arr: List[int] = [2, 3, 5, 7, 11, 13]
 
 print(arr)
-user_input = input("What sum you want to find?: ")
-print(find_sum(arr, int(user_input)))
+
+while True:
+    user_input: str = input("What sum you want to find?: ")
+    if user_input.isdigit():
+        sum: int = int(user_input)
+        break
+    else:
+        print("Invalid input")
+
+a: int
+b: int
+a, b = find_sum(arr, sum)
+
+if a and b:
+    print(f"{a} + {b} = {sum}")
+else:
+    print("No sums found")
